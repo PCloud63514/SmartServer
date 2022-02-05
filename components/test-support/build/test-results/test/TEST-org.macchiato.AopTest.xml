@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.macchiato.AopTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-02-05T09:01:25" hostname="PCloudui-MacBookPro.local" time="0.179">
+  <properties/>
+  <testcase name="aopTest()" classname="org.macchiato.AopTest" time="0.179"/>
+  <system-out><![CDATA[18:01:25.240 [Test worker] DEBUG org.springframework.aop.aspectj.annotation.ReflectiveAspectJAdvisorFactory - Found AspectJ method: public java.lang.Object org.macchiato.testsupport.aop.aspect.RunTimeLoggerAspect.methodLogger(org.aspectj.lang.ProceedingJoinPoint) throws java.lang.Throwable
+동작 테스트 시도 중
+run의 수행시간은 총 0.006282833초 소요되었습니다.
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
