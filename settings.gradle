@@ -1,0 +1,4 @@
+rootProject.name = 'SmartServer'
+include 'applications'
+include 'components'
+
