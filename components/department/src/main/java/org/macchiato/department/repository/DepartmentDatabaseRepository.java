@@ -13,7 +13,6 @@ import java.util.stream.Collectors;
 public class DepartmentDatabaseRepository implements DepartmentRepository, FindBaseDepartment {
     private List<DepartmentDatabaseEntity> database = new ArrayList<>();
 
-
     @Override
     public Optional<Department> findBy(DepartmentId departmentId) {
         return findDepartmentById(departmentId).map(DepartmentDatabaseEntity::toDomainModel);
@@ -29,6 +28,16 @@ public class DepartmentDatabaseRepository implements DepartmentRepository, FindB
             DepartmentDatabaseEntity departmentDatabaseEntity = opt.get();
             departmentDatabaseEntity.setName(department.departmentName());
             departmentDatabaseEntity.setDescription(department.description());
+        }
+    }
+
+    @Override
+    public void delete(DepartmentId departmentId) {
+        for (int i = 0; i < database.size(); i++) {
+            if (database.get(i).equals(departmentId)) {
+                database.remove(i);
+                break;
+            }
         }
     }
 
