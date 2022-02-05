@@ -9,4 +9,5 @@ public interface DepartmentRepository {
 
     Optional<Department> findBy(DepartmentId departmentId);
     void save(Department department);
+    void delete(DepartmentId departmentId);
 }
