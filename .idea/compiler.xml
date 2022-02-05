@@ -7,12 +7,20 @@
         <processorPath useClasspath="false">
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.20/18bcea7d5df4d49227b4a0743a536208ce4825bb/lombok-1.18.20.jar" />
         </processorPath>
-        <module name="SmartServer.applications.app-test.main" />
         <module name="SmartServer.applications.main" />
+        <module name="SmartServer.app-demo.main" />
+        <module name="SmartServer.components.main" />
+        <module name="SmartServer.app-test.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.6">
       <module name="applicationsttt" target="11" />
+      <module name="SmartServer.applications.app-test" target="11" />
+      <module name="SmartServer.applications.app-test.main" target="11" />
+      <module name="SmartServer.applications.app-test.test" target="11" />
+      <module name="SmartServer.components.department" target="11" />
+      <module name="SmartServer.components.department.main" target="11" />
+      <module name="SmartServer.components.department.test" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
