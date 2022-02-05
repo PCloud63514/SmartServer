@@ -5,4 +5,6 @@ include 'components:test-support'
 findProject(':components:test-support')?.name = 'test-support'
 include 'components:member'
 findProject(':components:member')?.name = 'member'
+include 'components:department'
+findProject(':components:department')?.name = 'department'
 
