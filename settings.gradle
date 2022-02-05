@@ -1,2 +1,4 @@
 rootProject.name = 'SmartServer'
+include 'applications:app-test'
+findProject(':applications:app-test')?.name = 'app-test'
 
