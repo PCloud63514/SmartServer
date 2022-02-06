@@ -5,6 +5,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import lombok.Value;
 
+import java.util.UUID;
+
 @Value
 @AllArgsConstructor
 @EqualsAndHashCode(of = "departmentInformation")
@@ -14,5 +16,9 @@ public class BaseDepartment implements Department {
 
     public BaseDepartment(DepartmentId departmentId, String departmentName, String description) {
         this(new DepartmentInformation(departmentId, departmentName, description));
+    }
+
+    public static BaseDepartment create(String departmentName, String description) {
+        return new BaseDepartment(new DepartmentId(UUID.randomUUID()), departmentName, description);
     }
 }
