@@ -1,14 +1,17 @@
 package service;
 
 import domain.Member;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import respository.MemberRepository;
 
 import java.util.List;
+import java.util.Optional;
 
+@RequiredArgsConstructor
+@Service
 public class MemberSeviceImpl implements MemberService {
-    @Autowired
-    MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
 
     @Override
     public void addMember(Member member) {
@@ -17,13 +20,24 @@ public class MemberSeviceImpl implements MemberService {
 
     @Override
     public Member getMember(Long memberId) {
-        return null;
+        Optional<Member> memberById = memberRepository.findMemberById(memberId);
+
+        return memberById.get();
     }
 
     @Override
     public List<Member> getMemberlist() {
-        return null;
+        List<Member> memberList = memberRepository.findAll();
+        return memberList;
     }
 
+    @Override
+    public void modifyMember(Member member) {
 
+    }
+
+    @Override
+    public void deleteMember(Long memberId) {
+
+    }
 }

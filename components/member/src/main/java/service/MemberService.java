@@ -18,6 +18,8 @@ public interface MemberService {
     List<Member> getMemberlist();
 
     // 멤버 수정
-    // 멤버 삭제
+    void modifyMember(Member member);
 
+    // 멤버 삭제
+    void deleteMember(Long memberId);
 }

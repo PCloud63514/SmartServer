@@ -1,14 +1,16 @@
 package respository;
 
 import domain.Member;
-import lombok.Value;
-import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-@Component
 public interface MemberRepository {
     void saveMember(Member member);
 
+    Optional<Member> findMemberById(Long memberId);
+
+    List<Member> findAll();
+
+    void deleteMember(Long memberId);
 }
