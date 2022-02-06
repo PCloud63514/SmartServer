@@ -43,7 +43,9 @@ public class DepartmentDatabaseEntity {
         builder.description(department.description());
 
         // TODO instanceOf 사용해서 builder 분기 주던지 해야할듯 씁 instanceof 싫다.
-
+        if (department instanceof BaseDepartment) {
+            builder.state(DepartmentState.Base);
+        }
         return builder.build();
     }
 }
