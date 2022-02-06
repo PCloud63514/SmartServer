@@ -7,7 +7,6 @@ import org.macchiato.department.domain.DepartmentId;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Component
 public class DepartmentDatabaseRepository implements DepartmentRepository, FindBaseDepartment {
@@ -15,7 +14,17 @@ public class DepartmentDatabaseRepository implements DepartmentRepository, FindB
 
     @Override
     public Optional<Department> findBy(DepartmentId departmentId) {
-        return findDepartmentById(departmentId).map(DepartmentDatabaseEntity::toDomainModel);
+        Optional<DepartmentDatabaseEntity> opt = findDepartmentById(departmentId);
+        return opt.map(DepartmentDatabaseEntity::toDomainModel);
+    }
+
+    @Override
+    public List<Department> findAll() {
+        List<Department> response = new ArrayList<>();
+        for (DepartmentDatabaseEntity e : database) {
+            response.add(e.toDomainModel());
+        }
+        return response;
     }
 
     @Override
@@ -34,7 +43,7 @@ public class DepartmentDatabaseRepository implements DepartmentRepository, FindB
     @Override
     public void delete(DepartmentId departmentId) {
         for (int i = 0; i < database.size(); i++) {
-            if (database.get(i).equals(departmentId)) {
+            if (database.get(i).getId().equals(departmentId.getDepartmentId())) {
                 database.remove(i);
                 break;
             }
@@ -42,14 +51,8 @@ public class DepartmentDatabaseRepository implements DepartmentRepository, FindB
     }
 
     private Optional<DepartmentDatabaseEntity> findDepartmentById(DepartmentId departmentId) {
-        List<DepartmentDatabaseEntity> collect = database.stream()
-                .filter(d -> d.getId().equals(departmentId.getDepartmentId()))
-                .collect(Collectors.toList());
-        if (collect.isEmpty()) {
-            return Optional.empty();
-        }
-
-        return Optional.of(collect.get(0));
+        return database.stream()
+                .filter(d -> d.getId().equals(departmentId.getDepartmentId())).findFirst();
     }
 
     @Override
