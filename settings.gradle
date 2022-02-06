@@ -7,4 +7,6 @@ include 'components:member'
 findProject(':components:member')?.name = 'member'
 include 'components:department'
 findProject(':components:department')?.name = 'department'
+include 'components:department-data'
+findProject(':components:department-data')?.name = 'department-data'
 
