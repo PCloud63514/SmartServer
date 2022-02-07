@@ -2,7 +2,6 @@ package org.macchiato.department.repository;
 
 import org.macchiato.department.domain.BaseDepartment;
 import org.macchiato.department.domain.Department;
-import org.macchiato.department.domain.DepartmentDatabaseEntity;
 import org.macchiato.department.domain.DepartmentId;
 import org.springframework.stereotype.Component;
 

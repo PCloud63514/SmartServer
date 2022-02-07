@@ -1,8 +1,8 @@
 rootProject.name = 'SmartServer'
 include 'applications'
+
 include 'components'
 include 'components:test-support'
-findProject(':components:test-support')?.name = 'test-support'
 include 'components:department'
-findProject(':components:department')?.name = 'department'
+include 'components:domain-department'
 
