@@ -11,7 +11,7 @@ public interface DepartmentService {
     // 부서 조회
     Department getDepartment(DepartmentId departmentId) throws Exception;
     // 부서 목록 조회
-    List<Department> getDepartmentList() throws Exception;
+    List<Department> getDepartments() throws Exception;
     // 부서 정보 수정
     void modifyDepartment(DepartmentInformation departmentInformation) throws Exception;
     // 부서 내 직원 목록 조회
