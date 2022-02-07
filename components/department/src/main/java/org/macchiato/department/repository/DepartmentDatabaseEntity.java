@@ -1,7 +1,10 @@
-package org.macchiato.department.domain;
+package org.macchiato.department.repository;
 
 
 import lombok.*;
+import org.macchiato.department.domain.BaseDepartment;
+import org.macchiato.department.domain.Department;
+import org.macchiato.department.domain.DepartmentId;
 
 import java.util.UUID;
 
