@@ -1,6 +1,5 @@
 package org.macchiato.department.service;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.*;
 import org.macchiato.department.domain.BaseDepartment;
 import org.macchiato.department.domain.Department;
@@ -65,7 +64,7 @@ class DepartmentServiceImplTest {
     @Test
     @Order(4)
     void getDepartmentListTest() throws Exception {
-        List<Department> departmentList = departmentService.getDepartmentList();
+        List<Department> departmentList = departmentService.getDepartments();
         assertThat(departmentList.size()).isEqualTo(2);
     }
 
