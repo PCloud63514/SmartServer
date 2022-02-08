@@ -1,4 +1,4 @@
-package org.macchiato.department.request;
+package org.macchiato.department.library.request;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

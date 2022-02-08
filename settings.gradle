@@ -6,6 +6,5 @@ include 'applications:app-department'
 include 'components'
 include 'components:test-support'
 include 'components:department'
-include 'components:domain-department'
-include 'components:rest-department'
+include 'components:library-department'
 
