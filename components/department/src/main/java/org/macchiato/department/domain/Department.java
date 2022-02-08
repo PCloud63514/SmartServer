@@ -1,5 +1,7 @@
 package org.macchiato.department.domain;
 
+import org.macchiato.department.library.body.response.DepartmentResponse;
+
 import java.util.UUID;
 
 public interface Department {
@@ -16,4 +18,8 @@ public interface Department {
     }
 
     DepartmentInformation getDepartmentInformation();
+
+    default DepartmentResponse toResponse() {
+        return new DepartmentResponse(departmentId(), departmentName(), description());
+    }
 }

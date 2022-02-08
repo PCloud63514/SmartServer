@@ -5,14 +5,16 @@ import org.macchiato.department.domain.BaseDepartment;
 import org.macchiato.department.domain.Department;
 import org.macchiato.department.domain.DepartmentId;
 import org.macchiato.department.domain.DepartmentInformation;
-import org.macchiato.department.library.request.AddDepartmentRequest;
-import org.macchiato.department.library.request.UpdateDepartmentRequest;
+import org.macchiato.department.library.body.request.AddDepartmentRequest;
+import org.macchiato.department.library.body.request.UpdateDepartmentRequest;
+import org.macchiato.department.library.body.response.DepartmentResponse;
 import org.macchiato.department.service.DepartmentService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @RestController
@@ -21,16 +23,17 @@ public class DepartmentApi {
     private final DepartmentService departmentService;
 
     @GetMapping("{id}")
-    public ResponseEntity<Department> getDepartment(@PathVariable("id") UUID departmentId) throws Exception {
+    public ResponseEntity<DepartmentResponse> getDepartment(@PathVariable("id") UUID departmentId) throws Exception {
         Department department = departmentService.getDepartment(new DepartmentId(departmentId));
 
-        return ResponseEntity.ok(department);
+        return ResponseEntity.ok(department.toResponse());
     }
 
     @GetMapping("list")
-    public ResponseEntity<List<Department>> getDepartments() throws Exception {
+    public ResponseEntity<List<DepartmentResponse>> getDepartments() throws Exception {
         List<Department> departmentList = departmentService.getDepartments();
-        return ResponseEntity.ok(departmentList);
+        List<DepartmentResponse> collect = departmentList.stream().map(Department::toResponse).collect(Collectors.toList());
+        return ResponseEntity.ok(collect);
     }
 
     @PostMapping
