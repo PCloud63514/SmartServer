@@ -1,8 +1,12 @@
 package org.macchiato.department;
 
 import lombok.RequiredArgsConstructor;
+import org.macchiato.department.domain.BaseDepartment;
 import org.macchiato.department.domain.Department;
 import org.macchiato.department.domain.DepartmentId;
+import org.macchiato.department.domain.DepartmentInformation;
+import org.macchiato.department.request.AddDepartmentRequest;
+import org.macchiato.department.request.UpdateDepartmentRequest;
 import org.macchiato.department.service.DepartmentService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,17 +34,21 @@ public class DepartmentApi {
     }
 
     @PostMapping
-    public void addDepartment() {
-        departmentService.addDepartment();
+    public ResponseEntity<UUID> addDepartment(@RequestBody AddDepartmentRequest request) throws Exception {
+        BaseDepartment department = BaseDepartment.create(request.getName(), request.getDescription());
+        departmentService.addDepartment(department);
+        return ResponseEntity.ok(department.departmentId());
     }
 
-    @PatchMapping
-    public void updateDepartment() {
-
+    @PatchMapping("{departmentId}")
+    public ResponseEntity updateDepartment(@PathVariable UUID departmentId, @RequestBody UpdateDepartmentRequest request) throws Exception {
+        departmentService.modifyDepartment(DepartmentInformation.create(departmentId, request.getName(), request.getDescription()));
+        return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping
-    public void deleteDepartment(UUID id) throws Exception {
-        departmentService.deleteDepartment(new DepartmentId(id));
+    @DeleteMapping("{departmentId}")
+    public ResponseEntity deleteDepartment(@PathVariable UUID departmentId) throws Exception {
+        departmentService.deleteDepartment(new DepartmentId(departmentId));
+        return ResponseEntity.ok().build();
     }
 }
