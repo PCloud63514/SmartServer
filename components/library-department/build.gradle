@@ -4,3 +4,7 @@ dependencies {
     implementation 'org.apache.httpcomponents:httpclient'
     implementation "com.fasterxml.jackson.core:jackson-databind"
 }
+
+test {
+    useJUnitPlatform()
+}
