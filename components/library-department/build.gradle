@@ -4,6 +4,8 @@ dependencies {
     implementation 'org.apache.httpcomponents:httpclient'
     implementation "com.fasterxml.jackson.core:jackson-databind"
     implementation "org.springframework.cloud:spring-cloud-starter-openfeign"
+    implementation 'io.github.openfeign:feign-okhttp'
+    implementation 'io.github.openfeign:feign-jackson'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
