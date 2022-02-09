@@ -1,19 +1,29 @@
 package org.macchiato.department.library.network;
 
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.macchiato.department.library.body.response.DepartmentResponse;
+import org.macchiato.department.library.config.NetworkConfiguration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.boot.test.autoconfigure.json.AutoConfigureJson;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
+@ExtendWith({SpringExtension.class})
+@ImportAutoConfiguration(value = NetworkConfiguration.class)
 class DepartmentRestTemplateTest {
-    DepartmentRestTemplate departmentRestTemplate;
+    static DepartmentRestTemplate departmentRestTemplate;
 
-    @BeforeEach
-    void setUp() {
-        departmentRestTemplate = new DepartmentRestTemplate(new RestTemplateBuilder().build());
+    @BeforeAll
+    static void setUp(@Autowired RestTemplate restTemplate) {
+        departmentRestTemplate = new DepartmentRestTemplate(restTemplate);
     }
 
     @Test
