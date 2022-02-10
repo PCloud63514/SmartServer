@@ -1,5 +1,6 @@
 {
   "name": "svelte-app",
+  "proxy": "http://localhost:8180",
   "version": "1.0.0",
   "private": true,
   "scripts": {
