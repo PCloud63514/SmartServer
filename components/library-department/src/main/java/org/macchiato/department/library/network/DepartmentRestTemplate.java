@@ -20,12 +20,12 @@ public class DepartmentRestTemplate implements DepartmentRestApi {
 
     @Override
     public UUID addDepartment(AddDepartmentRequest request) throws Exception {
-        return restTemplate.postForObject("http://localhost:8080/department", request, UUID.class);
+        return restTemplate.postForObject("http://localhost:8180/department", request, UUID.class);
     }
 
     @Override
     public List<DepartmentResponse> getDepartments() throws Exception {
-        ResponseEntity<List<DepartmentResponse>> exchange = restTemplate.exchange("http://localhost:8080/department/list", HttpMethod.GET, null, new ParameterizedTypeReference<List<DepartmentResponse>>() {
+        ResponseEntity<List<DepartmentResponse>> exchange = restTemplate.exchange("http://localhost:8180/department/list", HttpMethod.GET, null, new ParameterizedTypeReference<List<DepartmentResponse>>() {
         });
         return exchange.getBody();
 //        DepartmentResponse[] response = restTemplate.getForObject("list", DepartmentResponse[].class);
@@ -35,16 +35,16 @@ public class DepartmentRestTemplate implements DepartmentRestApi {
 
     @Override
     public DepartmentResponse getDepartment(UUID departmentId) throws Exception {
-        return restTemplate.getForObject("http://localhost:8080/department/" + departmentId.toString(), DepartmentResponse.class);
+        return restTemplate.getForObject("http://localhost:8180/department/" + departmentId.toString(), DepartmentResponse.class);
     }
 
     @Override
     public void updateDepartment(UUID departmentId, UpdateDepartmentRequest request) throws Exception {
-        restTemplate.patchForObject("http://localhost:8080/department/" + departmentId.toString(), request, Object.class);
+        restTemplate.patchForObject("http://localhost:8180/department/" + departmentId.toString(), request, Object.class);
     }
 
     @Override
     public void deleteDepartment(UUID departmentId) throws Exception {
-        restTemplate.delete("http://localhost:8080/department/" + departmentId.toString());
+        restTemplate.delete("http://localhost:8180/department/" + departmentId.toString());
     }
 }
