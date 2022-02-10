@@ -1,3 +1,0 @@
-�18:01:25.240 [Test worker] DEBUG org.springframework.aop.aspectj.annotation.ReflectiveAspectJAdvisorFactory - Found AspectJ method: public java.lang.Object org.macchiato.testsupport.aop.aspect.RunTimeLoggerAspect.methodLogger(org.aspectj.lang.ProceedingJoinPoint) throws java.lang.Throwable
-동작 테스트 시도 중
-Arun의 수행시간은 총 0.006282833초 소요되었습니다.
