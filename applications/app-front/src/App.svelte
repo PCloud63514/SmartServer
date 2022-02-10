@@ -12,6 +12,10 @@
 	<input type="number" bind:value={b}>
 
 	<p>{a} + {b} = {a + b}</p>
+	<p>{a} - {b} = {a - b}</p>
+	<p>{a} * {b} = {a * b}</p>
+	<p>{a} / {b} = {a / b}</p>
+	<p>{a} % {b} = {a % b}</p>
 </main>
 
 <style>

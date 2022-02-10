@@ -1,11 +1,10 @@
 buildscript {
     ext {
-        springBootVersion = '2.5.6'
+        springBootVersion = '2.5.3'
     }
     repositories {
         mavenCentral()
     }
-
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
@@ -16,8 +15,19 @@ subprojects {
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
 
+    ext {
+        set('springCloudVersion', "2020.0.3")
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
+
     group 'org.macchiato'
     version '1.0-SNAPSHOT'
+
     sourceCompatibility = 11
 
     repositories {
@@ -27,9 +37,9 @@ subprojects {
     dependencies {
         compileOnly 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
-        testImplementation 'org.springframework.boot:spring-boot-starter-test'
         developmentOnly 'org.springframework.boot:spring-boot-devtools'
         implementation 'org.springframework.boot:spring-boot-starter'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
     }
 
     bootJar.enabled = false
