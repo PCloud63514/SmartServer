@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.UUID;
 
 @EnableFeignClients
-@ImportAutoConfiguration
 class DepartmentClientTest {
     DepartmentClient departmentClient;
 
@@ -29,7 +28,7 @@ class DepartmentClientTest {
                 .decoder(new JacksonDecoder())
                 .encoder(new JacksonEncoder())
                 .contract(new SpringMvcContract())
-                .target(DepartmentClient.class, "http://localhost:8080/department");
+                .target(DepartmentClient.class, "http://localhost:8180/department");
     }
 
     @Test

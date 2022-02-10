@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
-@FeignClient(value = "department", url = "localhost:8080/department")
+@FeignClient(value = "department", url = "localhost:8180/department")
 public interface DepartmentClient {
 
     @GetMapping("{departmentId}")
