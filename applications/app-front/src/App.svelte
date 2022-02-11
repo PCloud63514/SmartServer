@@ -1,41 +1,61 @@
+
 <script>
-	export let name;
-	let a = 1;
-	let b = 2;
-</script>
-
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-
-	<input type="number" bind:value={a}>
-	<input type="number" bind:value={b}>
-
-	<p>{a} + {b} = {a + b}</p>
-	<p>{a} - {b} = {a - b}</p>
-	<p>{a} * {b} = {a * b}</p>
-	<p>{a} / {b} = {a / b}</p>
-	<p>{a} % {b} = {a % b}</p>
-</main>
-
-<style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
+	import SvelteTable from "svelte-table";
+	import {onMount} from "svelte"
+	var departments = [{departmentName: "야!", description: "스벨트 소리!"}]
+    let departmentName
+    let description
+	async function getDepartments() {
+		const result = await fetch("http://localhost:8180/department/list")
+		result.json().then((data)=> {
+		    departments = data
+        })
 	}
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
+	async function addDepartment() {
+	    await fetch("http://localhost:8180/department", {
+	        method: "POST",
+            headers: {
+	            "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name: departmentName,
+                description: description
+            })
+        }).then((data)=> {
+            departmentName = null
+            description = null
+            getDepartments()
+        })
+    }
 
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
+	onMount(async() => {
+		await getDepartments()
+	})
+	// define some sample data...
+
+	// define column configs
+	const columns = [
+        {
+            key: "departmentId",
+            title: "부서 아이디",
+            value: v => v.departmentId
+        },
+		{
+			key: "departmentName",
+			title: "부서 명",
+			value: v => v.departmentName
+		},
+		{
+			key: "description",
+			title: "description",
+			value: v => v.description
 		}
-	}
-</style>
+	];
+
+</script>
+<input type="text" placeholder="부서 명" bind:value={departmentName}>
+<input type="text" placeholder="부서 설명" bind:value={description}>
+<button on:click={addDepartment}>추가</button>
+<SvelteTable columns="{columns}" rows="{departments}"></SvelteTable>
+
