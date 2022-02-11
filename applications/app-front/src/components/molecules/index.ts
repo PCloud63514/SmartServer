@@ -1,1 +1,1 @@
-export {}
+export {CrossBox} from './crossbox'
