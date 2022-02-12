@@ -3,7 +3,7 @@ import { CrossBox } from "../../components/molecules";
 
 function Test() {
     return (
-        <div style={{ width: 500, height: 450 }}>
+        <div style={{ width: 120, height: 120 }}>
             <p>hello</p>
             <CrossBox/>
         </div>
