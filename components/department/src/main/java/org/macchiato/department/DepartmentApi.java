@@ -58,13 +58,15 @@ public class DepartmentApi {
     /**
      * 거주지 내 유저 조회
      */
-    public void getUsersToDepartment() {
+    @GetMapping("{departmentId}/user")
+    public void getUsersToDepartment(@PathVariable UUID departmentId) {
 
     }
     /**
      * 거주지에 유저 추가
      */
-    public void addUserToDepartment() {
+    @PostMapping("{departmentId}/uesr")
+    public void addUserToDepartment(@PathVariable UUID departmentId, @RequestBody AddUserToDepartmentRequest request) {
 
     }
 
@@ -72,8 +74,12 @@ public class DepartmentApi {
     /**
      * 거주지에 유저 제외
      */
+    @DeleteMapping("{departmentId}/user/{userId}")
+    public void removeUserToDepartment(@PathVariable UUID departmentId, @PathVariable String userId) {
 
-    public void removeUserToDepartment() {
+    }
+
+    public class AddUserToDepartmentRequest {
 
     }
 }

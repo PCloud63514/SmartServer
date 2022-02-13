@@ -17,8 +17,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @TestMethodOrder(value = MethodOrderer.OrderAnnotation.class)
 class DepartmentServiceImplTest {
     private static DepartmentService departmentService;
-    private static String givenName = "departmentName";
-    private static String givenDescription = "description";
+    private static final String givenName = "departmentName";
+    private static final String givenDescription = "description";
     private static DepartmentId addedId = null;
     @BeforeAll
     static void beforeAll() {
