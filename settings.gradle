@@ -1,7 +1,12 @@
 rootProject.name = 'SmartServer'
 include 'applications'
+include 'applications:app-department'
+include 'applications:app-front'
+
 include 'components'
 include 'components:test-support'
+include 'components:department'
+include 'components:library-department'
 findProject(':components:test-support')?.name = 'test-support'
 include 'components:member'
 findProject(':components:member')?.name = 'member'
