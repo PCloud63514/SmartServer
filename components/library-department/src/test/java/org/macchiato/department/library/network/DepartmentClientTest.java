@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 import org.macchiato.department.library.body.request.AddDepartmentRequest;
 import org.macchiato.department.library.body.request.UpdateDepartmentRequest;
 import org.macchiato.department.library.body.response.DepartmentResponse;
+import org.macchiato.department.library.body.response.SampleResponse;
+import org.macchiato.department.library.body.response.TestResponse;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.cloud.openfeign.support.SpringMvcContract;
@@ -33,6 +35,9 @@ class DepartmentClientTest {
 
     @Test
     void test() throws Exception {
+        SampleResponse<TestResponse> sample = departmentClient.sample("제발!!!");
+
+
         UUID department1 = departmentClient.addDepartment(new AddDepartmentRequest("부서1", "1번 부서 설명"));
         DepartmentResponse department = departmentClient.getDepartment(department1);
 

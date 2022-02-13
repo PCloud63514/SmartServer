@@ -8,6 +8,8 @@ import org.macchiato.department.domain.DepartmentInformation;
 import org.macchiato.department.library.body.request.AddDepartmentRequest;
 import org.macchiato.department.library.body.request.UpdateDepartmentRequest;
 import org.macchiato.department.library.body.response.DepartmentResponse;
+import org.macchiato.department.library.body.response.SampleResponse;
+import org.macchiato.department.library.body.response.TestResponse;
 import org.macchiato.department.service.DepartmentService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -53,5 +55,10 @@ public class DepartmentApi {
     public ResponseEntity deleteDepartment(@PathVariable UUID departmentId) throws Exception {
         departmentService.deleteDepartment(new DepartmentId(departmentId));
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("{message}/sample")
+    public ResponseEntity<SampleResponse<TestResponse>> sample(@PathVariable String message) {
+        return ResponseEntity.ok(new SampleResponse<>(UUID.randomUUID(), new TestResponse(message)));
     }
 }

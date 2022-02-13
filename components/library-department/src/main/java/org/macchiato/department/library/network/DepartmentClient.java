@@ -4,6 +4,8 @@ import feign.Headers;
 import org.macchiato.department.library.body.request.AddDepartmentRequest;
 import org.macchiato.department.library.body.request.UpdateDepartmentRequest;
 import org.macchiato.department.library.body.response.DepartmentResponse;
+import org.macchiato.department.library.body.response.SampleResponse;
+import org.macchiato.department.library.body.response.TestResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -31,4 +33,7 @@ public interface DepartmentClient {
 
     @DeleteMapping("{departmentId}")
     void deleteDepartment(@PathVariable(name = "departmentId") UUID departmentId) throws Exception;
+
+    @GetMapping("{message}/sample")
+    SampleResponse<TestResponse> sample(@PathVariable(name = "message") String message);
 }

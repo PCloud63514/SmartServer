@@ -7,4 +7,6 @@ include 'components'
 include 'components:test-support'
 include 'components:department'
 include 'components:library-department'
+include 'components:library-senselink'
+findProject(':components:library-senselink')?.name = 'library-senselink'
 
