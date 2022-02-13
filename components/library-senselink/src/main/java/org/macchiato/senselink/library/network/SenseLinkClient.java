@@ -4,6 +4,7 @@ import org.macchiato.senselink.library.body.request.AddEmployeeRequest;
 import org.macchiato.senselink.library.body.response.AddEmployeeResponse;
 import org.macchiato.senselink.library.body.response.SenseLinkResponse;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -12,7 +13,7 @@ public interface SenseLinkClient {
     /**
      * 직원 추가
      */
-    @PostMapping("/users")
+    @PostMapping(value="/users", consumes = {MediaType.APPLICATION_JSON_VALUE})
     SenseLinkResponse<AddEmployeeResponse> addEmployee(@RequestBody AddEmployeeRequest request);
 
 
