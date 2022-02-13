@@ -54,4 +54,26 @@ public class DepartmentApi {
         departmentService.deleteDepartment(new DepartmentId(departmentId));
         return ResponseEntity.ok().build();
     }
+
+    /**
+     * 거주지 내 유저 조회
+     */
+    public void getUsersToDepartment() {
+
+    }
+    /**
+     * 거주지에 유저 추가
+     */
+    public void addUserToDepartment() {
+
+    }
+
+
+    /**
+     * 거주지에 유저 제외
+     */
+
+    public void removeUserToDepartment() {
+
+    }
 }
