@@ -54,4 +54,32 @@ public class DepartmentApi {
         departmentService.deleteDepartment(new DepartmentId(departmentId));
         return ResponseEntity.ok().build();
     }
+
+    /**
+     * 거주지 내 유저 조회
+     */
+    @GetMapping("{departmentId}/user")
+    public void getUsersToDepartment(@PathVariable UUID departmentId) {
+
+    }
+    /**
+     * 거주지에 유저 추가
+     */
+    @PostMapping("{departmentId}/uesr")
+    public void addUserToDepartment(@PathVariable UUID departmentId, @RequestBody AddUserToDepartmentRequest request) {
+
+    }
+
+
+    /**
+     * 거주지에 유저 제외
+     */
+    @DeleteMapping("{departmentId}/user/{userId}")
+    public void removeUserToDepartment(@PathVariable UUID departmentId, @PathVariable String userId) {
+
+    }
+
+    public class AddUserToDepartmentRequest {
+
+    }
 }
