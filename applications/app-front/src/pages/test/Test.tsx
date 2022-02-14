@@ -1,11 +1,28 @@
 import React from 'react'
 import { CrossBox } from "../../components/molecules";
 
+// compo Header
+
+// compo content
+// compo A
+// compo B
+// compo C
+
+// compo bottom
+
 function Test() {
     return (
-        <div style={{ width: 120, height: 120 }}>
-            <p>hello</p>
-            <CrossBox/>
+        <div style={{
+            margin: 10,
+            width: 520,
+            height: 30
+        }}>
+            <span style={{
+                width: 520,
+                height: 30
+            }}>
+                <CrossBox/>
+            </span>
         </div>
     )
 }
