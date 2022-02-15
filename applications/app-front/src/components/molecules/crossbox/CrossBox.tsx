@@ -1,6 +1,7 @@
 import Box, {BoxProps, BoxTypeMap} from '@mui/material/Box'
 
 function CrossBox() {
+    const x = 720;
     return (
         <Box
             sx={{
