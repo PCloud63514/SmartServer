@@ -1,5 +1,5 @@
 import React from 'react'
-import { CrossBox } from "../../components/molecules";
+import { CrossBox, TemplateBox } from "../../components/molecules";
 
 // compo Header
 
@@ -21,7 +21,15 @@ function Test() {
                 width: 520,
                 height: 30
             }}>
-                <CrossBox/>
+                <TemplateBox
+                    style={{
+                        width: "10em",
+                        height: "10em",
+                        backgroundColor: "skyblue"
+                    }}
+                >
+
+                </TemplateBox>
             </span>
         </div>
     )
