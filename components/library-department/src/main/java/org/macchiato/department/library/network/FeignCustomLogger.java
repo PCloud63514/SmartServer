@@ -8,7 +8,10 @@ import feign.Util;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
-
+// https://github.com/goodGid/Feign_Demo_Project/blob/main/src/main/java/dev/be/goodgid/feign/logger/FeignCustomLogger.java
+// https://goodgid.github.io/Analyzing-the-Feign-Client-and-Use/
+// https://www.tabnine.com/code/java/methods/feign.Feign$Builder/errorDecoder
+// https://engineering-skcc.github.io/msa/jhipster-feign/
 @Slf4j
 public class FeignCustomLogger extends Logger {
 
