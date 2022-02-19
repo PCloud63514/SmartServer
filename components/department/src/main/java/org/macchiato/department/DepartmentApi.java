@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/department")
+@RequestMapping("/departments")
 public class DepartmentApi {
     private final DepartmentService departmentService;
 
@@ -29,7 +29,7 @@ public class DepartmentApi {
         return ResponseEntity.ok(department.toResponse());
     }
 
-    @GetMapping("list")
+    @GetMapping
     public ResponseEntity<List<DepartmentResponse>> getDepartments() throws Exception {
         List<Department> departmentList = departmentService.getDepartments();
         List<DepartmentResponse> collect = departmentList.stream().map(Department::toResponse).collect(Collectors.toList());
@@ -44,15 +44,13 @@ public class DepartmentApi {
     }
 
     @PatchMapping("{departmentId}")
-    public ResponseEntity updateDepartment(@PathVariable UUID departmentId, @RequestBody UpdateDepartmentRequest request) throws Exception {
+    public void updateDepartment(@PathVariable UUID departmentId, @RequestBody UpdateDepartmentRequest request) throws Exception {
         departmentService.modifyDepartment(DepartmentInformation.create(departmentId, request.getName(), request.getDescription()));
-        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("{departmentId}")
-    public ResponseEntity deleteDepartment(@PathVariable UUID departmentId) throws Exception {
+    public void deleteDepartment(@PathVariable UUID departmentId) throws Exception {
         departmentService.deleteDepartment(new DepartmentId(departmentId));
-        return ResponseEntity.ok().build();
     }
 
     /**
