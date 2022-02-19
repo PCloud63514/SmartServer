@@ -20,7 +20,7 @@ public class NetworkConfiguration {
                 .decoder(new JacksonDecoder())
                 .encoder(new JacksonEncoder())
                 .contract(new SpringMvcContract())
-                .target(DepartmentClient.class, "http://localhost:8180/department");
+                .target(DepartmentClient.class, "http://localhost:8180/departments");
     }
 
     @Bean
