@@ -28,15 +28,12 @@ public class DepartmentDatabaseRepository implements DepartmentRepository, FindB
 
     @Override
     public void save(Department department) {
-        Optional<DepartmentDatabaseEntity> opt = findDepartmentById(department.getDepartmentInformation().getDepartmentId());
-        if (opt.isEmpty()) {
+        findDepartmentById(department.getDepartmentInformation().getDepartmentId()).ifPresentOrElse(entity -> {
+            entity.setName(department.departmentName());
+            entity.setDescription(department.description());
+        }, () -> {
             database.add(DepartmentDatabaseEntity.toDepartmentDatabaseEntity(department));
-        } else {
-            // TODO 향후 State가 더 나뉘면 별도의 메서드로 분리해줄 예정
-            DepartmentDatabaseEntity departmentDatabaseEntity = opt.get();
-            departmentDatabaseEntity.setName(department.departmentName());
-            departmentDatabaseEntity.setDescription(department.description());
-        }
+        });
     }
 
     @Override
