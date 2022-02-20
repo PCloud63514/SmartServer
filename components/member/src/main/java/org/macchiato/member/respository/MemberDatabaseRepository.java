@@ -1,6 +1,6 @@
-package org.macchiato.respository;
+package org.macchiato.member.respository;
 
-import org.macchiato.domain.Member;
+import org.macchiato.member.domain.Member;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

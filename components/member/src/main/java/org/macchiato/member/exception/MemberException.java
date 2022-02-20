@@ -1,4 +1,4 @@
-package org.macchiato.exception;
+package org.macchiato.member.exception;
 
 import org.macchiato.support.exception.DomainCode;
 

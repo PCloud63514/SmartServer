@@ -1,6 +1,6 @@
-package org.macchiato.service;
+package org.macchiato.member.service;
 
-import org.macchiato.domain.Member;
+import org.macchiato.member.domain.Member;
 
 import java.util.List;
 

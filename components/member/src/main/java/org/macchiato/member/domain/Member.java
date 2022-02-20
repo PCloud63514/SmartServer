@@ -1,6 +1,5 @@
-package org.macchiato.domain;
+package org.macchiato.member.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;

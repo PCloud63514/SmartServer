@@ -10,5 +10,6 @@ include 'components:library-department'
 include 'components:member'
 include 'components:library-member'
 include 'components:support-exception'
-
+include 'applications:app-member'
+findProject(':applications:app-member')?.name = 'app-member'
 

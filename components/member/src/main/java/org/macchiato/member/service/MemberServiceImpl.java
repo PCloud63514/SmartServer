@@ -1,10 +1,10 @@
-package org.macchiato.service;
+package org.macchiato.member.service;
 
-import org.macchiato.domain.Member;
+import org.macchiato.member.domain.Member;
 import lombok.RequiredArgsConstructor;
-import org.macchiato.exception.NotFoundMemberException;
+import org.macchiato.member.exception.NotFoundMemberException;
 import org.springframework.stereotype.Service;
-import org.macchiato.respository.MemberRepository;
+import org.macchiato.member.respository.MemberRepository;
 
 import java.util.List;
 
