@@ -23,24 +23,23 @@ public class DepartmentApi {
     private final DepartmentService departmentService;
 
     @GetMapping("{id}")
-    public ResponseEntity<DepartmentResponse> getDepartment(@PathVariable("id") UUID departmentId) throws Exception {
+    public DepartmentResponse getDepartment(@PathVariable("id") UUID departmentId) throws Exception {
         Department department = departmentService.getDepartment(new DepartmentId(departmentId));
 
-        return ResponseEntity.ok(department.toResponse());
+        return department.toResponse();
     }
 
     @GetMapping
-    public ResponseEntity<List<DepartmentResponse>> getDepartments() throws Exception {
+    public List<DepartmentResponse> getDepartments() throws Exception {
         List<Department> departmentList = departmentService.getDepartments();
-        List<DepartmentResponse> collect = departmentList.stream().map(Department::toResponse).collect(Collectors.toList());
-        return ResponseEntity.ok(collect);
+        return departmentList.stream().map(Department::toResponse).collect(Collectors.toList());
     }
 
     @PostMapping
-    public ResponseEntity<UUID> addDepartment(@RequestBody AddDepartmentRequest request) throws Exception {
+    public UUID addDepartment(@RequestBody AddDepartmentRequest request) throws Exception {
         BaseDepartment department = BaseDepartment.create(request.getName(), request.getDescription());
         departmentService.addDepartment(department);
-        return ResponseEntity.ok(department.departmentId());
+        return department.departmentId();
     }
 
     @PatchMapping("{departmentId}")
