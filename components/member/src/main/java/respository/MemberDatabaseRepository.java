@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Component
 public class MemberDatabaseRepository implements MemberRepository{
@@ -20,12 +20,14 @@ public class MemberDatabaseRepository implements MemberRepository{
             memberList.add(member);
         }else {
             Member member1 = memberById.get();
+            member1.setMemberName(member.getMemberName());
+            member1.setMailAddress(member.getMailAddress());
         }
     }
 
     @Override
     public Optional<Member> findMemberById(Long memberId) {
-        return this.memberList.stream().filter(mem -> mem.getMemberId() == memberId).collect(Collectors.toList()).stream().findFirst();
+        return this.memberList.stream().filter(mem -> Objects.equals(mem.getMemberId(), memberId)).findFirst();
     }
 
     @Override
@@ -34,9 +36,6 @@ public class MemberDatabaseRepository implements MemberRepository{
     }
     @Override
     public void deleteMember(Long memberId) {
-        Optional<Member> member = this.memberList.stream().filter(mem -> mem.getMemberId() == memberId).collect(Collectors.toList()).stream().findFirst();
-        if (!member.isEmpty()) {
-            memberList.remove(member);
-        }
+        findMemberById(memberId).ifPresent(value -> memberList.remove(value));
     }
 }

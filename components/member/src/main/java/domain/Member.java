@@ -11,7 +11,7 @@ import lombok.Setter;
 public class Member {
     private final Long memberId;
     @NonNull
-    private final String memberName;
+    private String memberName;
     @NonNull
-    private final String mailAddress;
+    private String mailAddress;
 }
