@@ -5,7 +5,9 @@ import org.macchiato.department.domain.BaseDepartment;
 import org.macchiato.department.domain.Department;
 import org.macchiato.department.domain.DepartmentId;
 import org.macchiato.department.domain.DepartmentInformation;
+import org.macchiato.department.exception.NotFoundDepartmentException;
 import org.macchiato.department.repository.DepartmentRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -29,7 +31,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public Department getDepartment(DepartmentId departmentId) throws Exception {
-        return repository.findBy(departmentId).orElseThrow(IllegalStateException::new);
+        return repository.findBy(departmentId).orElseThrow(NotFoundDepartmentException::new);
     }
 
     @Override
@@ -50,6 +52,10 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public void deleteDepartment(DepartmentId departmentId) {
-        repository.delete(departmentId);
+        repository.findBy(departmentId).ifPresentOrElse(entity -> {
+            repository.delete(departmentId);
+        }, () -> {
+            throw new NotFoundDepartmentException();
+        });
     }
 }

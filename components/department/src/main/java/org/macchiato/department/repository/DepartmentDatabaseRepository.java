@@ -38,12 +38,7 @@ public class DepartmentDatabaseRepository implements DepartmentRepository, FindB
 
     @Override
     public void delete(DepartmentId departmentId) {
-        for (int i = 0; i < database.size(); i++) {
-            if (database.get(i).getId().equals(departmentId.getDepartmentId())) {
-                database.remove(i);
-                break;
-            }
-        }
+        findDepartmentById(departmentId).ifPresent(entity -> database.remove(entity));
     }
 
     private Optional<DepartmentDatabaseEntity> findDepartmentById(DepartmentId departmentId) {
