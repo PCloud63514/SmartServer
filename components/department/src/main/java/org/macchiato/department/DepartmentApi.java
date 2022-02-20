@@ -24,9 +24,7 @@ public class DepartmentApi {
 
     @GetMapping("{id}")
     public DepartmentResponse getDepartment(@PathVariable("id") UUID departmentId) throws Exception {
-        Department department = departmentService.getDepartment(new DepartmentId(departmentId));
-
-        return department.toResponse();
+        return departmentService.getDepartment(new DepartmentId(departmentId)).toResponse();
     }
 
     @GetMapping
