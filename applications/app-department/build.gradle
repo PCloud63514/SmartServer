@@ -1,6 +1,5 @@
 dependencies {
     implementation(project(":components:department"))
-    implementation "org.springframework.cloud:spring-cloud-starter-openfeign"
 }
 
 test {

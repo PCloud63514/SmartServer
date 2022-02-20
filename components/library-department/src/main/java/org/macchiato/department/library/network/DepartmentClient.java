@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
-@FeignClient(value = "department", url = "localhost:8180/department")
+@FeignClient(value = "department", url = "localhost:8180/departments")
 public interface DepartmentClient {
 
     @GetMapping("{departmentId}")
     DepartmentResponse getDepartment(@PathVariable(name = "departmentId") UUID departmentId) throws Exception;
 
-    @GetMapping("list")
+    @GetMapping
     List<DepartmentResponse> getDepartments() throws Exception;
 
     @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE})
