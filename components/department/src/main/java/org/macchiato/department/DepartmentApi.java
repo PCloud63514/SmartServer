@@ -18,40 +18,64 @@ import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/department")
+@RequestMapping("/departments")
 public class DepartmentApi {
     private final DepartmentService departmentService;
 
     @GetMapping("{id}")
-    public ResponseEntity<DepartmentResponse> getDepartment(@PathVariable("id") UUID departmentId) throws Exception {
+    public DepartmentResponse getDepartment(@PathVariable("id") UUID departmentId) throws Exception {
         Department department = departmentService.getDepartment(new DepartmentId(departmentId));
 
-        return ResponseEntity.ok(department.toResponse());
+        return department.toResponse();
     }
 
-    @GetMapping("list")
-    public ResponseEntity<List<DepartmentResponse>> getDepartments() throws Exception {
+    @GetMapping
+    public List<DepartmentResponse> getDepartments() throws Exception {
         List<Department> departmentList = departmentService.getDepartments();
-        List<DepartmentResponse> collect = departmentList.stream().map(Department::toResponse).collect(Collectors.toList());
-        return ResponseEntity.ok(collect);
+        return departmentList.stream().map(Department::toResponse).collect(Collectors.toList());
     }
 
     @PostMapping
-    public ResponseEntity<UUID> addDepartment(@RequestBody AddDepartmentRequest request) throws Exception {
+    public UUID addDepartment(@RequestBody AddDepartmentRequest request) throws Exception {
         BaseDepartment department = BaseDepartment.create(request.getName(), request.getDescription());
         departmentService.addDepartment(department);
-        return ResponseEntity.ok(department.departmentId());
+        return department.departmentId();
     }
 
     @PatchMapping("{departmentId}")
-    public ResponseEntity updateDepartment(@PathVariable UUID departmentId, @RequestBody UpdateDepartmentRequest request) throws Exception {
+    public void updateDepartment(@PathVariable UUID departmentId, @RequestBody UpdateDepartmentRequest request) throws Exception {
         departmentService.modifyDepartment(DepartmentInformation.create(departmentId, request.getName(), request.getDescription()));
-        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("{departmentId}")
-    public ResponseEntity deleteDepartment(@PathVariable UUID departmentId) throws Exception {
+    public void deleteDepartment(@PathVariable UUID departmentId) throws Exception {
         departmentService.deleteDepartment(new DepartmentId(departmentId));
-        return ResponseEntity.ok().build();
+    }
+
+    /**
+     * 거주지 내 유저 조회
+     */
+    @GetMapping("{departmentId}/user")
+    public void getUsersToDepartment(@PathVariable UUID departmentId) {
+
+    }
+    /**
+     * 거주지에 유저 추가
+     */
+    @PostMapping("{departmentId}/uesr")
+    public void addUserToDepartment(@PathVariable UUID departmentId, @RequestBody AddUserToDepartmentRequest request) {
+
+    }
+
+    /**
+     * 거주지에 유저 제외
+     */
+    @DeleteMapping("{departmentId}/user/{userId}")
+    public void removeUserToDepartment(@PathVariable UUID departmentId, @PathVariable String userId) {
+
+    }
+
+    public class AddUserToDepartmentRequest {
+
     }
 }
