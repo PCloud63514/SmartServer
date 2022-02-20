@@ -68,7 +68,6 @@ public class DepartmentApi {
 
     }
 
-
     /**
      * 거주지에 유저 제외
      */
