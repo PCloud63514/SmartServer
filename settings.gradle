@@ -10,4 +10,6 @@ include 'components:library-department'
 findProject(':components:test-support')?.name = 'test-support'
 include 'components:member'
 findProject(':components:member')?.name = 'member'
+include 'components:library-member'
+findProject(':components:library-member')?.name = 'library-member'
 

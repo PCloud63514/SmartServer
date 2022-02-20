@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
-public class MemberSeviceImpl implements MemberService {
+public class MemberServiceImpl implements MemberService {
     private final MemberRepository memberRepository;
 
     @Override
