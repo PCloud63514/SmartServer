@@ -1,6 +1,6 @@
-package respository;
+package org.macchiato.respository;
 
-import domain.Member;
+import org.macchiato.domain.Member;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -11,15 +11,17 @@ import java.util.Optional;
 @Component
 public class MemberDatabaseRepository implements MemberRepository {
     List<Member> memberList = new ArrayList<>();
-
+    private Long index = 1L;
     @Override
-    public void saveMember(Member member) {
+    public Long saveMember(Member member) {
         findMemberById(member.getMemberId()).ifPresentOrElse(entity -> {
             entity.setMemberName(member.getMemberName());
             entity.setMailAddress(member.getMailAddress());
         }, ()-> {
+            member.setMemberId(index++);
             memberList.add(member);
         });
+        return member.getMemberId();
     }
 
     @Override

@@ -1,12 +1,12 @@
-package respository;
+package org.macchiato.respository;
 
-import domain.Member;
+import org.macchiato.domain.Member;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface MemberRepository {
-    void saveMember(Member member);
+    Long saveMember(Member member);
 
     Optional<Member> findMemberById(Long memberId);
 

@@ -1,4 +1,4 @@
-package domain;
+package org.macchiato.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Member {
-    private final Long memberId;
+    private Long memberId;
     @NonNull
     private String memberName;
     @NonNull

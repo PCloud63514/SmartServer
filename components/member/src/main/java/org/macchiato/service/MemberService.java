@@ -1,12 +1,12 @@
-package service;
+package org.macchiato.service;
 
-import domain.Member;
+import org.macchiato.domain.Member;
 
 import java.util.List;
 
 public interface MemberService {
     // 멤버 추가
-    void addMember(Member member);
+    Long addMember(Member member);
 
     // 멤버 조회
     Member getMember(Long memberId);
@@ -15,7 +15,7 @@ public interface MemberService {
 
 
     // 멤버 목록 전체 조회
-    List<Member> getMemberlist();
+    List<Member> getMembers();
 
     // 멤버 수정
     void modifyMember(Member member);
