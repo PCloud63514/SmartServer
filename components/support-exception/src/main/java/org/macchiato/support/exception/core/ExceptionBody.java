@@ -1,4 +1,4 @@
-package org.macchiato.support.exception;
+package org.macchiato.support.exception.core;
 
 import lombok.Getter;
 

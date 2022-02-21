@@ -1,7 +1,7 @@
-package org.macchiato.support.exception;
+package org.macchiato.support.exception.core;
 
 public enum ErrorCode {
-    NOT_FOUND(1);
+    NOT_EXISTS(1);
     private final int code;
 
     ErrorCode(int code) {
