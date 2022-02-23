@@ -28,9 +28,6 @@ public class DepartmentRestTemplate implements DepartmentRestApi {
         ResponseEntity<List<DepartmentResponse>> exchange = restTemplate.exchange("http://localhost:8180/department/list", HttpMethod.GET, null, new ParameterizedTypeReference<List<DepartmentResponse>>() {
         });
         return exchange.getBody();
-//        DepartmentResponse[] response = restTemplate.getForObject("list", DepartmentResponse[].class);
-//        assert response != null;
-//        return Arrays.asList(response);
     }
 
     @Override

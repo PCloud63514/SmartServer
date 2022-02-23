@@ -1,7 +1,6 @@
 package org.macchiato.department.exception;
 
 import org.macchiato.support.exception.AlreadyExistsException;
-import org.macchiato.support.exception.core.DomainCode;
 
 public class AlreadyExistsDepartmentException extends AlreadyExistsException implements DepartmentCode {
     public AlreadyExistsDepartmentException() {
